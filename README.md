@@ -1,1 +1,1 @@
-For windows
+ghc-mod wrappers for stack env.
