@@ -6,7 +6,7 @@ DIST_STACK=${CABAL_DIR}/$(stack path --dist-dir)
 DIST=${CABAL_DIR}/dist
 
 if [ -f ${DIST_STACK}/setup-config ] && [ ! -e ${DIST} ]; then
-    ln -s ${DIST_STACK} ${DIST}
+    ln -s ${DIST_STACK} ${DIST} > /dev/null
 fi
 
 export PATH=${LOCAL_BIN}:${PATH}

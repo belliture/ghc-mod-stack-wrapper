@@ -6,7 +6,7 @@ for /F "usebackq" %%t in (`stack path --dist-dir`) do set STACK_DIST=%CABAL_DIR%
 set DIST=%CABAL_DIR%\dist
 
 if exist %STACK_DIST%\setup-config if not exist %DIST% (
-    mklink /j %DIST% %STACK_DIST%
+    mklink /j %DIST% %STACK_DIST% > nul
 )
 
 set PATH=%LOCAL_BIN%;%PATH%
