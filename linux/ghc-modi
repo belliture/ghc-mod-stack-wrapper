@@ -1,5 +1,14 @@
 #!/bin/bash
 
-export PATH=$HOME/.local/bin:$PATH
-stack exec -- ghc-modi $@
+LOCAL_BIN=${HOME}/.local/bin
+CABAL_DIR=$(${LOCAL_BIN}/ghc-mod root)
+DIST_STACK=${CABAL_DIR}/$(stack path --dist-dir)
+DIST=${CABAL_DIR}/dist
+
+if [ -f ${DIST_STACK}/setup-config ] && [ ! -e ${DIST} ]; then
+    ln -s ${DIST_STACK} ${DIST}
+fi
+
+export PATH=${LOCAL_BIN}:${PATH}
+stack exec ghc-modi -- $@
 
